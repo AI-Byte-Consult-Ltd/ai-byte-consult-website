@@ -8,7 +8,7 @@ const About = () => {
             About the Company
           </h2>
           <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-            AI ByteConsult Ltd is a technology firm uniting automation, blockchain, and artificial intelligence into a single ecosystem. From Nixie multi-channel systems to NFT-based digital intelligence, we develop real-world solutions powered by the next generation of AI.
+            AI Byte Consult Ltd. is a technology firm uniting automation, blockchain, and artificial intelligence into a single ecosystem. From NICS AI multi-channel systems to NFT-based digital intelligence, we develop real-world solutions powered by the next generation of AI.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             Our mission is to transform how businesses operate by integrating cutting-edge technology with practical, scalable solutions that drive growth and innovation.
