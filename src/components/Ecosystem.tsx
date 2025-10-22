@@ -6,37 +6,37 @@ const ecosystems = [
     icon: Bot,
     title: "NICS AI Ecosystem",
     description:
-      "NICS AI is an advanced AI ecosystem that merges artificial intelligence, blockchain technology, and decentralized governance to drive innovation and automation.",
-  },
-  {
-    icon: Globe,
-    title: "AquaTerra World (Metaverse)",
-    description:
-      "Immersive 3D AI-driven environments for virtual collaboration and next-gen business experiences. AquaTerra World is an AI powered universe where virtual worlds, gaming, and real economy connect in a single immersive experience.",
-  },
-  {
-    icon: Hexagon,
-    title: "Pantheon of Eternals",
-    description:
-      "Pantheon of Eternals AI is a groundbreaking collection of living iNFTs that merge ancient mythology with cutting-edge artificial intelligence. Each Eternal is reborn as an interactive AI avatar, capable of self-learning, dialogue & dynamic upgrades. Blockchain meets artificial intelligence.",
+      "NICS AI Ecosystem is a unified artificial intelligence and blockchain infrastructure designed to connect industries, automate workflows, and enable cross-platform data synchronization. It combines decentralized logic, neural APIs, and tokenized access to deliver secure, scalable, and intelligent solutions for businesses, developers, and global communities.",
   },
   {
     icon: UtensilsCrossed,
     title: "NICS AI HoReCa",
     description:
-      "NICS AI HoReCa is an intelligent AI-powered platform for restaurants, bars, and cafés. It provides White Label automation, real-time voice interaction, customer analytics, and order management with adaptive AI agents. The system integrates seamlessly with POS, CRM, and payment systems — creating a complete digital assistant for the hospitality industry.",
+      "NICS AI HoReCa is an advanced AI automation platform for restaurants, bars, and cafés. It provides White Label solutions with voice-driven interaction, smart analytics, order automation, and adaptive AI agents. Integrated with POS, CRM, and payment systems, it streamlines hospitality operations and enhances customer experience through intelligent automation.",
   },
   {
     icon: Mountain,
     title: "NICS AI Geologist",
     description:
-      "NICS AI Geologist is an analytical AI system for the mining, geology, and genealogy sectors. It unifies exploration data, geological layers, and historical records to provide intelligent insights into mineral discovery, resource mapping, and ancestral land data. Combining AI-driven data mining with geospatial analytics, it supports sustainable development and digital heritage preservation.",
+      "NICS AI Geologist is an analytical platform connecting geology, mining, and genealogy through intelligent data fusion. It processes exploration data, geological layers, and historical archives to identify resource potential and ancestral land correlations. The system supports sustainable exploration and digital heritage mapping with AI-powered insight.",
+  },
+  {
+    icon: Globe,
+    title: "AquaTerra World (Metaverse)",
+    description:
+      "AquaTerra World is an immersive AI-driven metaverse that unites virtual collaboration, entertainment, and business innovation. Within this 3D environment, users interact, learn, and trade using digital assets powered by AI and blockchain, creating a seamless connection between virtual experience and real-world economy.",
+  },
+  {
+    icon: Hexagon,
+    title: "Pantheon of Eternals",
+    description:
+      "Pantheon of Eternals AI is a revolutionary collection of interactive iNFT entities inspired by ancient mythology. Each Eternal—whether Zeus, Ra, or Odin—is reborn as an AI avatar with personality, dialogue, and adaptive learning. Merging divine archetypes with artificial intelligence, the Pantheon bridges storytelling, identity, and digital evolution.",
   },
   {
     icon: Users,
     title: "PRIDE Social Network",
     description:
-      "Web3-based social platform rewarding engagement with tokens. The future of decentralized community.",
+      "PRIDE Social Network is a decentralized Web3 community platform that rewards creativity and engagement with native tokens. It empowers users to share ideas, art, and experiences while earning from their social activity, building an inclusive and self-sustaining digital ecosystem for expression and collaboration.",
   },
 ];
 
@@ -49,7 +49,7 @@ const Ecosystem = () => {
             Our Ecosystem
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive suite of AI-powered solutions for the modern business
+            A comprehensive suite of AI-powered solutions for the modern digital economy
           </p>
         </div>
 
