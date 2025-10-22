@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const ecosystems = [
   {
     icon: Bot,
-    title: "ICS AI Ecosystem",
+    title: "NICS AI Ecosystem",
     description: "Multi-channel AI automations across Telegram, WhatsApp, and email. Streamline communication and boost efficiency.",
   },
   {

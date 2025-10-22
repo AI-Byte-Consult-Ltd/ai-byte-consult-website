@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "AI ByteConsult revolutionized our logistics operations. The real-time tracking system has saved us countless hours and improved our delivery accuracy by 95%.",
+    quote: "AI Byte Consult revolutionized our logistics operations. The real-time tracking system has saved us countless hours and improved our delivery accuracy by 95%.",
     author: "Maria Lopez",
     position: "CEO, CargoNova",
   },
