@@ -8,10 +8,10 @@ const About = () => {
             About the Company
           </h2>
           <p className="text-lg md:text-xl text-foreground/90 leading-relaxed">
-            AI Byte Consult Ltd. is a technology firm uniting automation, blockchain, and artificial intelligence into a single ecosystem. From NICS AI multi-channel systems to NFT-based digital intelligence, we develop real-world solutions powered by the next generation of AI.
+            AI Byte Consult Ltd. is a global technology company specializing in artificial intelligence and automation. We design intelligent systems that optimize operations, enhance decision-making, and accelerate digital transformation for organizations worldwide.
           </p>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-            Our mission is to transform how businesses operate by integrating cutting-edge technology with practical, scalable solutions that drive growth and innovation.
+            Our AI-driven solutions serve diverse industries — from B2B and B2C enterprises to hospitality, healthcare, logistics, geology, and scientific research. We build scalable platforms that help businesses automate workflows, analyze data efficiently, and unlock new opportunities through intelligent innovation.
           </p>
         </div>
       </div>

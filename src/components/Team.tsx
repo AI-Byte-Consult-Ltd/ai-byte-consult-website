@@ -5,7 +5,7 @@ import alexImg from "@/assets/team-alex.jpg";
 
 const team = [
   {
-    name: "lexander Lunin",
+    name: "Alexander Lunin",
     role: "Co-Founder & AI Architect",
     bio: "Leads AI architecture and Web3 integrations across the Nixie Ecosystem. Over 15 years of experience in cutting-edge technology.",
     image: johnImg,
