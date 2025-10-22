@@ -37,14 +37,14 @@ const Hero = () => {
         <div className="animate-fade-in space-y-6 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-glow">
-              AI ByteConsult Ltd
+              AI Byte Consult Ltd
             </span>
           </h1>
           <p className="text-2xl md:text-3xl font-light text-muted-foreground">
             The Future of Intelligent Systems
           </p>
           <p className="text-lg md:text-xl text-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            Empowering businesses with automation, blockchain, and intelligent NFT ecosystems.
+            Empowering businesses with AI automation, blockchain, and intelligent NFT ecosystems.
           </p>
           <div className="pt-8">
             <Button 

@@ -5,13 +5,13 @@ import alexImg from "@/assets/team-alex.jpg";
 
 const team = [
   {
-    name: "John Smith",
+    name: "lexander Lunin",
     role: "Co-Founder & AI Architect",
     bio: "Leads AI architecture and Web3 integrations across the Nixie Ecosystem. Over 15 years of experience in cutting-edge technology.",
     image: johnImg,
   },
   {
-    name: "Alex Morgan",
+    name: "Aleksandr Tochilov",
     role: "Co-Founder & Product Director",
     bio: "Focuses on automation systems, client solutions, and creative ecosystem design. Passionate about turning complex tech into simple solutions.",
     image: alexImg,
@@ -28,7 +28,7 @@ const Team = () => {
             Meet the Founders
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The visionaries behind AI ByteConsult Ltd
+            The visionaries behind AI Byte Consult Ltd.
           </p>
         </div>
 
