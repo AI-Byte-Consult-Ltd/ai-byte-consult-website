@@ -10,12 +10,12 @@ const ecosystems = [
   {
     icon: Globe,
     title: "AquaTerra World (Metaverse)",
-    description: "Immersive 3D AI-driven environments for virtual collaboration and next-gen business experiences.",
+    description: "Immersive 3D AI-driven environments for virtual collaboration and next-gen business experiences. AquaTerra World is an AI powered universe where virtual worlds, gaming, and real economy connect in a single immersive experience.",
   },
   {
     icon: Hexagon,
     title: "Pantheon of Eternals",
-    description: "Intelligent NFT avatars with 33-trait metadata and speech capabilities. Blockchain meets artificial intelligence.",
+    description: "Pantheon of Eternals AI is a groundbreaking collection of living iNFTs that merge ancient mythology with cutting-edge artificial intelligence. Each Eternal is reborn as an interactive AI avatar, capable of self-learning, dialogue & dynamic upgrades. From Zeus, ruler of thunder and sky, to Ra, eternal sun god & Odin, the storm-bringer, every deity carries unique attributes drawn from their mythological origins - eyes, hair, aura, divine power-combined with advanced AI traits such as conversational intelligence, adaptability & self-evolution. Blockchain meets artificial intelligence.",
   },
   {
     icon: Users,
