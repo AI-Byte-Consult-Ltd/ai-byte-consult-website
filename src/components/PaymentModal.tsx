@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 
@@ -74,11 +75,12 @@ const PaymentModal = ({ open, onClose }: { open: boolean; onClose: () => void })
   const [task, setTask] = useState("");
   const [automationType, setAutomationType] = useState("");
   const [plan, setPlan] = useState("");
+  const [contact, setContact] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async () => {
-    if (!platform || !model || !task || !automationType || !plan) {
-      toast.error("Please complete all steps before submitting.");
+    if (!contact.trim()) {
+      toast.error("Please provide your contact (email or phone).");
       return;
     }
 
@@ -89,7 +91,7 @@ const PaymentModal = ({ open, onClose }: { open: boolean; onClose: () => void })
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: CHAT_ID,
-          text: `🧠 *New AI Agent Request*\n\n📱 Platform: ${platform}\n🤖 Model: ${model}\n🪄 Automation Type: ${automationType}\n💬 Task: ${task}\n⚙️ Selected Plan: ${plan}\n\nDate: ${new Date().toLocaleString()}`,
+          text: `🧠 *New AI Agent Request*\n\n📱 Platform: ${platform}\n🤖 Model: ${model}\n🪄 Automation Type: ${automationType}\n💬 Task: ${task}\n⚙️ Selected Plan: ${plan}\n📧 Contact: ${contact}\n\nDate: ${new Date().toLocaleString()}`,
           parse_mode: "Markdown",
         }),
       });
@@ -101,9 +103,10 @@ const PaymentModal = ({ open, onClose }: { open: boolean; onClose: () => void })
       setTask("");
       setAutomationType("");
       setPlan("");
+      setContact("");
     } catch (err) {
       console.error(err);
-      toast.error("Failed to send request. Please try again later.");
+      toast.error("Failed to send the request. Please try again later.");
     }
     setSubmitting(false);
   };
@@ -116,7 +119,7 @@ const PaymentModal = ({ open, onClose }: { open: boolean; onClose: () => void })
             Build Your AI Automation
           </DialogTitle>
           <DialogDescription className="text-center text-lg">
-            Step {step} of 5
+            Step {step} of 6
           </DialogDescription>
         </DialogHeader>
 
@@ -259,10 +262,62 @@ const PaymentModal = ({ open, onClose }: { open: boolean; onClose: () => void })
               <Button variant="outline" onClick={() => setStep(4)}>
                 Back
               </Button>
-              <Button onClick={handleSubmit} disabled={submitting}>
+              <Button onClick={() => (plan ? setStep(6) : toast.error("Select a plan"))}>
+                Next
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 6 — Contact & Submit */}
+        {step === 6 && (
+          <div className="space-y-6 py-4">
+            <h2 className="text-2xl font-semibold text-center gradient-text">
+              Final Step — Confirm and Send Request
+            </h2>
+            <p className="text-center text-muted-foreground max-w-xl mx-auto">
+              Review your selections and provide your contact details so our team can reach you.
+            </p>
+
+            {/* Summary */}
+            <Card className="p-6 bg-gradient-to-r from-primary/20 to-purple-500/20 border-2 border-primary/50">
+              <h3 className="font-semibold mb-3 text-lg">Summary</h3>
+              <ul className="text-sm space-y-1">
+                <li>📱 <strong>Platform:</strong> {platform}</li>
+                <li>🤖 <strong>Model:</strong> {model}</li>
+                <li>🪄 <strong>Automation Type:</strong> {automationType}</li>
+                <li>💬 <strong>Task:</strong> {task}</li>
+                <li>⚙️ <strong>Plan:</strong> {plan}</li>
+              </ul>
+            </Card>
+
+            <div className="space-y-2">
+              <h4 className="text-lg font-semibold text-center">Your Contact Information</h4>
+              <Input
+                placeholder="Enter your email or phone number"
+                value={contact}
+                onChange={(e) => setContact(e.target.value)}
+                className="w-full"
+              />
+            </div>
+
+            <div className="flex justify-between pt-4">
+              <Button variant="outline" onClick={() => setStep(5)} disabled={submitting} className="flex-1">
+                Back
+              </Button>
+              <Button
+                onClick={handleSubmit}
+                disabled={!contact.trim() || submitting}
+                className="flex-1 gap-2"
+                size="lg"
+              >
                 {submitting ? "Sending..." : "Send Request"}
               </Button>
             </div>
+
+            <p className="text-xs text-center text-muted-foreground pt-2">
+              🔒 Your contact information is used only to respond to your request.
+            </p>
           </div>
         )}
       </DialogContent>
