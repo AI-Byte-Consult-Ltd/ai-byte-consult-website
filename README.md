@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
+# Welcome to AI Byte Consult Ltd
 
-## Project info
+## Project Overview
 
-**URL**: https://lovable.dev/projects/f821c698-5aa7-43d9-a8ad-bfb13f3f73fd
+URL: https://aibyteconsult.com
 
-## How can I edit this code?
+**About Us:**
+AI Byte Consult Ltd is a technology company specializing in **SaaS development, business automation, AI ecosystems, and blockchain-based solutions**.
+We create advanced digital infrastructures — from AI-powered web platforms and workflow automation tools to full-scale blockchain ecosystems like **NICS AI** — empowering innovation across industries.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## How to Edit This Project
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f821c698-5aa7-43d9-a8ad-bfb13f3f73fd) and start prompting.
+There are several ways to work with this application:
 
-Changes made via Lovable will be committed automatically to this repo.
+### **Option 1: Using Your Preferred IDE**
 
-**Use your preferred IDE**
+If you wish to develop locally, you can clone the repository and work from your own environment.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+#### Steps:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Step 1: Clone the repository.
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Step 2: Navigate to the project folder.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install all dependencies.
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Run the development server.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Your development server will launch with hot reloading for instant updates.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+### **Option 2: Edit Directly on GitHub**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Open the desired file on GitHub.
+2. Click the **Edit (✏️)** button in the top right corner.
+3. Apply your changes and commit them directly to the repository.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+### **Option 3: Use GitHub Codespaces**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Navigate to your repository on GitHub.
+2. Click **Code → Codespaces**.
+3. Launch a new Codespace to instantly open a cloud-based development environment.
+4. Edit and commit changes directly from there.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/f821c698-5aa7-43d9-a8ad-bfb13f3f73fd) and click on Share -> Publish.
+## Technologies Used
 
-## Can I connect a custom domain to my Lovable project?
+This project is built using a modern and scalable stack:
 
-Yes, you can!
+* **Vite** – Lightning-fast build tool
+* **React** – Modern UI library for web interfaces
+* **TypeScript** – Type-safe JavaScript
+* **shadcn/ui** – Reusable component system
+* **Tailwind CSS** – Utility-first CSS framework
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Deployment
+
+Deploy this project easily via your preferred cloud provider (e.g. **Vercel**, **Netlify**, or **GitHub Pages**).
+After deployment, you can connect your custom domain through your hosting provider’s DNS settings.
+
+---
+
+## Custom Domains
+
+You can connect your own custom domain (for example: `app.aibyteconsult.com`).
+
+To configure a domain:
+
+1. Add your domain via your hosting platform (Vercel, GitHub Pages, etc.).
+2. Create the appropriate **A records** and **CNAME** entries in your DNS settings.
+3. Enable HTTPS to ensure secure access.
+
+*Example:*
+
+* `A` record → root domain pointing to host IP
+* `CNAME` record → `www` subdomain pointing to your project host
+
+---
+
+## About AI Byte Consult Ltd
+
+AI Byte Consult Ltd provides end-to-end solutions in:
+
+* **AI Ecosystem Development (NICS AI Ecosystem)**
+* **Automation Systems (n8n, Node.js, API Integrations)**
+* **Blockchain Solutions (Smart Contracts, Tokens, NFTs)**
+* **Web & SaaS Development (React, Vite, TypeScript)**
+* **Infrastructure & DevOps (Azure, Docker, Cloudflare, GitHub Actions)**
+
+We design scalable systems that connect AI, blockchain, and automation into one unified ecosystem for the future of digital innovation.
+
+---
+
+© 2025 **AI Byte Consult Ltd** — Empowering the Intelligent Future
