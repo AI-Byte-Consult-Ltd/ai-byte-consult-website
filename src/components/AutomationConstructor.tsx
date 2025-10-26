@@ -3,14 +3,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Slider } from "@/components/ui/slider";
-import { 
-  MessageSquare, Bot, Cpu, Zap, Database, Webhook, 
-  ShoppingCart, Check, ArrowRight, Sparkles
+import {
+  MessageSquare, Bot, Cpu, Zap, Database, Webhook,
+  ShoppingCart, Check, ArrowRight, Sparkles,
 } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
 import { toast } from "sonner";
-import PaymentModal from "./PaymentModal";
 
+const BOT_TOKEN = "8008999736:AAFlKkISWAutFkpJEofsWBKpdT3sw6YJ49Y";
+const CHAT_ID = "474339414";
+
+// -------------------- Data ---------------------
 const platforms = [
   { id: "telegram", name: "Telegram", icon: "💬" },
   { id: "whatsapp", name: "WhatsApp", icon: "📱" },
@@ -46,20 +49,13 @@ const automationRoles = [
   { id: "crypto", name: "Crypto Wallet Notifier", icon: "₿" },
   { id: "nft", name: "NFT Minting Assistant", icon: "🎨" },
   { id: "tech", name: "Technical Support Bot", icon: "🛠️" },
-  { id: "ecommerce", name: "E-commerce Sales Assistant", icon: "🛒" },
+  { id: "ecommerce", name: "E-commerce Assistant", icon: "🛒" },
   { id: "legal", name: "Legal Form Processor", icon: "⚖️" },
   { id: "logistics", name: "Logistics Tracker", icon: "📦" },
   { id: "tutor", name: "Language Tutor", icon: "📚" },
   { id: "health", name: "Health Appointment Bot", icon: "🏥" },
   { id: "finance", name: "Financial Report Generator", icon: "💰" },
   { id: "workflow", name: "Custom Workflow Builder", icon: "🔧" },
-];
-
-const complexityLevels = [
-  { value: 1, label: "Basic", price: 500, description: "Simple automation" },
-  { value: 2, label: "Standard", price: 1500, description: "Multi-step workflows" },
-  { value: 3, label: "Advanced", price: 3500, description: "Complex integrations" },
-  { value: 4, label: "Enterprise", price: 7500, description: "Full-scale solution" },
 ];
 
 const integrations = [
@@ -69,6 +65,7 @@ const integrations = [
   { id: "mysql", name: "MySQL", icon: "🗄️" },
 ];
 
+// -------------------- Component ---------------------
 const AutomationConstructor = () => {
   const [step, setStep] = useState(1);
   const [config, setConfig] = useState({
@@ -76,411 +73,252 @@ const AutomationConstructor = () => {
     llm: "",
     taskDescription: "",
     role: "",
-    complexity: 2,
     integration: "",
+    email: "",
+    phone: "",
+    telegram: "",
   });
-  const [showPayment, setShowPayment] = useState(false);
-  const [orderConfirmed, setOrderConfirmed] = useState(false);
-
-  const currentComplexity = complexityLevels[config.complexity - 1];
 
   const handleNext = () => {
-    if (step === 1 && !config.platform) {
-      toast.error("Please select a platform");
-      return;
-    }
-    if (step === 2 && !config.llm) {
-      toast.error("Please select an LLM model");
-      return;
-    }
-    if (step === 3 && !config.taskDescription.trim()) {
-      toast.error("Please describe your automation task");
-      return;
-    }
-    if (step === 4 && !config.role) {
-      toast.error("Please select an automation role");
-      return;
-    }
+    if (step === 1 && !config.platform) return toast.error("Please select a platform");
+    if (step === 2 && !config.llm) return toast.error("Please select an AI model");
+    if (step === 3 && !config.taskDescription.trim()) return toast.error("Please describe your task");
+    if (step === 4 && !config.role) return toast.error("Please select automation type");
     if (step < 6) setStep(step + 1);
   };
 
-  const handleBack = () => {
-    if (step > 1) setStep(step - 1);
+  const handleBack = () => step > 1 && setStep(step - 1);
+
+  const handleSubmit = async () => {
+    if (!config.email && !config.phone && !config.telegram) {
+      toast.error("Please enter at least one contact method.");
+      return;
+    }
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          parse_mode: "Markdown",
+          text: `🧠 *New AI Automation Request*\n\n📱 Platform: ${platforms.find(p => p.id === config.platform)?.name}\n🤖 Model: ${llmModels.find(m => m.id === config.llm)?.name}\n🪄 Automation: ${automationRoles.find(r => r.id === config.role)?.name}\n💬 Task: ${config.taskDescription}\n🔗 Integration: ${integrations.find(i => i.id === config.integration)?.name || "N/A"}\n\n📧 Email: ${config.email || "-"}\n📞 Phone: ${config.phone || "-"}\n💬 Telegram: ${config.telegram || "-"}\n\nDate: ${new Date().toLocaleString()}`,
+        }),
+      });
+      toast.success("✅ Request sent successfully! We will contact you soon.");
+      setStep(1);
+      setConfig({
+        platform: "",
+        llm: "",
+        taskDescription: "",
+        role: "",
+        integration: "",
+        email: "",
+        phone: "",
+        telegram: "",
+      });
+    } catch (e) {
+      console.error(e);
+      toast.error("Failed to send request. Try again later.");
+    }
   };
 
-  const handleOrder = () => {
-    setShowPayment(true);
-  };
-
-  const handlePaymentSuccess = () => {
-    setShowPayment(false);
-    setOrderConfirmed(true);
-    
-    // In a real implementation, this would send data to your backend/Telegram
-    console.log("Order placed:", config);
-    toast.success("Order received! We'll contact you soon.");
-  };
-
-  if (orderConfirmed) {
-    return (
-      <section className="py-20 px-6 bg-gradient-to-b from-background to-background/50">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
-          <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
-            <Check className="w-10 h-10 text-white" />
-          </div>
-          <h2 className="text-4xl font-bold mb-4 gradient-text">Thank You!</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Your automation request has been received. Our team will contact you soon via Telegram.
-          </p>
-          <Button
-            onClick={() => {
-              setOrderConfirmed(false);
-              setStep(1);
-              setConfig({
-                platform: "",
-                llm: "",
-                taskDescription: "",
-                role: "",
-                complexity: 2,
-                integration: "",
-              });
-            }}
-            className="gap-2"
-          >
-            <Sparkles className="w-4 h-4" />
-            Create Another Automation
-          </Button>
-        </div>
-      </section>
-    );
-  }
-
+  // -------------------- UI ---------------------
   return (
     <section className="py-20 px-6 bg-gradient-to-b from-background to-background/50 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      
+
       <div className="max-w-6xl mx-auto relative z-10">
+        {/* Title */}
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-5xl font-bold mb-4 gradient-text">
-            Automation Constructor
-          </h2>
+          <h2 className="text-5xl font-bold mb-4 gradient-text">Automation Constructor</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Design your custom AI automation in minutes. Choose your platform, AI model, and functionality.
+            Design your custom AI automation in minutes — choose your platform, model, and purpose.
           </p>
         </div>
 
-        {/* Progress Steps */}
+        {/* Progress */}
         <div className="flex justify-between items-center mb-12 max-w-4xl mx-auto">
           {[1, 2, 3, 4, 5, 6].map((s) => (
             <div key={s} className="flex items-center flex-1">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all duration-300 ${
-                  s <= step
-                    ? "bg-gradient-primary text-white shadow-neon"
-                    : "bg-card border-2 border-border text-muted-foreground"
+                  s <= step ? "bg-gradient-primary text-white shadow-neon" : "bg-card border text-muted-foreground"
                 }`}
               >
                 {s < step ? <Check className="w-5 h-5" /> : s}
               </div>
-              {s < 6 && (
-                <div
-                  className={`h-1 flex-1 mx-2 transition-all duration-300 ${
-                    s < step ? "bg-gradient-primary" : "bg-border"
-                  }`}
-                ></div>
-              )}
+              {s < 6 && <div className={`h-1 flex-1 mx-2 ${s < step ? "bg-gradient-primary" : "bg-border"}`}></div>}
             </div>
           ))}
         </div>
 
-        {/* Step Content */}
-        <div className="glass-card p-8 mb-8 min-h-[500px] animate-fade-in">
-          {/* Step 1: Platform Selection */}
+        {/* Step content */}
+        <div className="glass-card p-8 mb-8 min-h-[500px] animate-fade-in max-h-[90vh] overflow-y-auto rounded-xl">
+
+          {/* Step 1 */}
           {step === 1 && (
-            <div className="animate-fade-in">
+            <>
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <MessageSquare className="w-8 h-8 text-primary" />
                 Select Platform
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                {platforms.map((platform) => (
+                {platforms.map((p) => (
                   <Card
-                    key={platform.id}
-                    className={`p-6 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-neon text-center ${
-                      config.platform === platform.id
-                        ? "bg-gradient-primary border-2 border-primary"
-                        : "bg-card/50"
+                    key={p.id}
+                    className={`p-6 text-center cursor-pointer transition-all ${
+                      config.platform === p.id ? "bg-gradient-primary text-white border-primary" : "bg-card/50"
                     }`}
-                    onClick={() => setConfig({ ...config, platform: platform.id })}
+                    onClick={() => setConfig({ ...config, platform: p.id })}
                   >
-                    <div className="text-4xl mb-2">{platform.icon}</div>
-                    <div className="text-sm font-medium">{platform.name}</div>
+                    <div className="text-4xl mb-2">{p.icon}</div>
+                    <div className="text-sm font-medium">{p.name}</div>
                   </Card>
                 ))}
               </div>
-            </div>
+            </>
           )}
 
-          {/* Step 2: LLM Model */}
+          {/* Step 2 */}
           {step === 2 && (
-            <div className="animate-fade-in">
+            <>
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <Cpu className="w-8 h-8 text-primary" />
                 Choose AI Model
               </h3>
               <div className="grid gap-4">
-                {llmModels.map((model) => (
+                {llmModels.map((m) => (
                   <Card
-                    key={model.id}
-                    className={`p-6 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-neon ${
-                      config.llm === model.id
-                        ? "bg-gradient-primary border-2 border-primary"
-                        : "bg-card/50"
+                    key={m.id}
+                    className={`p-6 cursor-pointer transition-all ${
+                      config.llm === m.id ? "bg-gradient-primary border-primary" : "bg-card/50"
                     }`}
-                    onClick={() => setConfig({ ...config, llm: model.id })}
+                    onClick={() => setConfig({ ...config, llm: m.id })}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex justify-between items-center">
                       <div>
-                        <h4 className="text-xl font-bold mb-1">{model.name}</h4>
-                        <p className="text-sm text-muted-foreground">{model.description}</p>
+                        <h4 className="text-xl font-bold mb-1">{m.name}</h4>
+                        <p className="text-sm text-muted-foreground">{m.description}</p>
                       </div>
                       <Bot className="w-8 h-8 text-primary" />
                     </div>
                   </Card>
                 ))}
               </div>
-            </div>
+            </>
           )}
 
-          {/* Step 3: Task Description */}
+          {/* Step 3 */}
           {step === 3 && (
-            <div className="animate-fade-in">
+            <>
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <Zap className="w-8 h-8 text-primary" />
                 Define Your Task
               </h3>
-              <p className="text-muted-foreground mb-6">
-                Describe what you want your automation to do. Be as specific as possible.
-              </p>
               <Textarea
-                placeholder="E.g., 'Manage restaurant orders via WhatsApp, handle customer questions, send order confirmations, and track delivery status...'"
-                className="min-h-[300px] text-lg"
+                placeholder="Describe what your automation should do..."
+                className="min-h-[200px]"
                 value={config.taskDescription}
-                onChange={(e) =>
-                  setConfig({ ...config, taskDescription: e.target.value })
-                }
+                onChange={(e) => setConfig({ ...config, taskDescription: e.target.value })}
               />
-              <p className="text-sm text-muted-foreground mt-2">
-                {config.taskDescription.length} characters
-              </p>
-            </div>
+            </>
           )}
 
-          {/* Step 4: Automation Role */}
+          {/* Step 4 */}
           {step === 4 && (
-            <div className="animate-fade-in">
+            <>
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <Sparkles className="w-8 h-8 text-primary" />
                 Select Automation Type
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-h-[400px] overflow-y-auto pr-2">
-                {automationRoles.map((role) => (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-h-[400px] overflow-y-auto">
+                {automationRoles.map((r) => (
                   <Card
-                    key={role.id}
-                    className={`p-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-neon text-center ${
-                      config.role === role.id
-                        ? "bg-gradient-primary border-2 border-primary"
-                        : "bg-card/50"
+                    key={r.id}
+                    className={`p-4 cursor-pointer text-center transition-all ${
+                      config.role === r.id ? "bg-gradient-primary text-white border-primary" : "bg-card/50"
                     }`}
-                    onClick={() => setConfig({ ...config, role: role.id })}
+                    onClick={() => setConfig({ ...config, role: r.id })}
                   >
-                    <div className="text-3xl mb-2">{role.icon}</div>
-                    <div className="text-sm font-medium">{role.name}</div>
+                    <div className="text-3xl mb-2">{r.icon}</div>
+                    <div className="text-sm">{r.name}</div>
                   </Card>
                 ))}
               </div>
-            </div>
+            </>
           )}
 
-          {/* Step 5: Complexity & Integration */}
+          {/* Step 5 */}
           {step === 5 && (
-            <div className="animate-fade-in">
+            <>
               <h3 className="text-3xl font-bold mb-8 flex items-center gap-3">
                 <Database className="w-8 h-8 text-primary" />
-                Workflow Configuration
+                Integration Setup
               </h3>
-              
-              <div className="mb-10">
-                <h4 className="text-xl font-bold mb-4">Complexity Level</h4>
-                <div className="mb-6">
-                  <Slider
-                    value={[config.complexity]}
-                    onValueChange={(value) =>
-                      setConfig({ ...config, complexity: value[0] })
-                    }
-                    min={1}
-                    max={4}
-                    step={1}
-                    className="mb-4"
-                  />
-                </div>
-                <Card className="p-6 bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/30">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h5 className="text-2xl font-bold gradient-text">
-                        {currentComplexity.label}
-                      </h5>
-                      <p className="text-muted-foreground">
-                        {currentComplexity.description}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-3xl font-bold gradient-text">
-                        ${currentComplexity.price}
-                      </div>
-                      <p className="text-sm text-muted-foreground">Estimated cost</p>
-                    </div>
-                  </div>
-                </Card>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {integrations.map((i) => (
+                  <Card
+                    key={i.id}
+                    className={`p-4 cursor-pointer text-center transition-all ${
+                      config.integration === i.id ? "bg-gradient-primary text-white border-primary" : "bg-card/50"
+                    }`}
+                    onClick={() => setConfig({ ...config, integration: i.id })}
+                  >
+                    <div className="text-3xl mb-2">{i.icon}</div>
+                    <div className="text-sm">{i.name}</div>
+                  </Card>
+                ))}
               </div>
-
-              <div>
-                <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Webhook className="w-6 h-6 text-primary" />
-                  Integration Type
-                </h4>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {integrations.map((integration) => (
-                    <Card
-                      key={integration.id}
-                      className={`p-4 cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-neon text-center ${
-                        config.integration === integration.id
-                          ? "bg-gradient-primary border-2 border-primary"
-                          : "bg-card/50"
-                      }`}
-                      onClick={() =>
-                        setConfig({ ...config, integration: integration.id })
-                      }
-                    >
-                      <div className="text-3xl mb-2">{integration.icon}</div>
-                      <div className="text-sm font-medium">{integration.name}</div>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </div>
+            </>
           )}
 
-          {/* Step 6: Preview & Order */}
+          {/* Step 6 */}
           {step === 6 && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in space-y-6">
               <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
                 <ShoppingCart className="w-8 h-8 text-primary" />
-                Review Your Configuration
+                Review & Submit
               </h3>
-              
-              <div className="space-y-4 mb-8">
-                <Card className="p-6 bg-card/50">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                        Platform
-                      </h4>
-                      <p className="text-lg">
-                        {platforms.find((p) => p.id === config.platform)?.name}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                        AI Model
-                      </h4>
-                      <p className="text-lg">
-                        {llmModels.find((m) => m.id === config.llm)?.name}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                        Role
-                      </h4>
-                      <p className="text-lg">
-                        {automationRoles.find((r) => r.id === config.role)?.name}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                        Complexity
-                      </h4>
-                      <p className="text-lg">{currentComplexity.label}</p>
-                    </div>
-                    {config.integration && (
-                      <div>
-                        <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                          Integration
-                        </h4>
-                        <p className="text-lg">
-                          {integrations.find((i) => i.id === config.integration)?.name}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </Card>
 
-                <Card className="p-6 bg-card/50">
-                  <h4 className="text-sm font-bold text-muted-foreground mb-2">
-                    Task Description
-                  </h4>
-                  <p className="text-base leading-relaxed">{config.taskDescription}</p>
-                </Card>
+              <Card className="p-6 bg-card/50">
+                <ul className="space-y-2 text-lg">
+                  <li>📱 Platform: {platforms.find(p => p.id === config.platform)?.name}</li>
+                  <li>🤖 Model: {llmModels.find(m => m.id === config.llm)?.name}</li>
+                  <li>🪄 Type: {automationRoles.find(r => r.id === config.role)?.name}</li>
+                  <li>🔗 Integration: {integrations.find(i => i.id === config.integration)?.name || "N/A"}</li>
+                  <li>💬 Task: {config.taskDescription}</li>
+                </ul>
+              </Card>
 
-                <Card className="p-8 bg-gradient-to-r from-primary/20 to-purple-500/20 border-2 border-primary/50">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h4 className="text-2xl font-bold mb-2">Total Investment</h4>
-                      <p className="text-muted-foreground">
-                        Estimated delivery: 7-14 business days
-                      </p>
-                    </div>
-                    <div className="text-5xl font-bold gradient-text">
-                      ${currentComplexity.price}
-                    </div>
-                  </div>
-                </Card>
-              </div>
+              <Card className="p-6 bg-gradient-to-r from-primary/20 to-purple-500/20 border-primary/50 border-2">
+                <h4 className="text-xl font-bold mb-4 text-center">Contact Information</h4>
+                <p className="text-center text-muted-foreground mb-4">
+                  Please enter at least one way to reach you:
+                </p>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <Input placeholder="Email" value={config.email} onChange={(e) => setConfig({ ...config, email: e.target.value })} />
+                  <Input placeholder="Phone" value={config.phone} onChange={(e) => setConfig({ ...config, phone: e.target.value })} />
+                  <Input placeholder="Telegram username" value={config.telegram} onChange={(e) => setConfig({ ...config, telegram: e.target.value })} />
+                </div>
+              </Card>
             </div>
           )}
         </div>
 
-        {/* Navigation Buttons */}
+        {/* Navigation */}
         <div className="flex justify-between items-center max-w-4xl mx-auto">
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            disabled={step === 1}
-            className="gap-2"
-          >
-            Back
-          </Button>
-
+          <Button variant="outline" onClick={handleBack} disabled={step === 1}>Back</Button>
           {step < 6 ? (
             <Button onClick={handleNext} className="gap-2">
-              Next
-              <ArrowRight className="w-4 h-4" />
+              Next <ArrowRight className="w-4 h-4" />
             </Button>
           ) : (
-            <Button onClick={handleOrder} size="lg" className="gap-2 text-lg px-8">
-              <ShoppingCart className="w-5 h-5" />
-              Order Now
+            <Button onClick={handleSubmit} size="lg" className="gap-2 px-8 text-lg">
+              <Check className="w-5 h-5" /> Submit Order
             </Button>
           )}
         </div>
       </div>
-
-      <PaymentModal
-        open={showPayment}
-        onClose={() => setShowPayment(false)}
-        onSuccess={handlePaymentSuccess}
-        amount={currentComplexity.price}
-      />
     </section>
   );
 };
