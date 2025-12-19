@@ -183,38 +183,6 @@ const AIAutomationFix = () => {
           </div>
         </div>
 
-        {/* Multilingual Availability */}
-        <div className="glass-card p-8 md:p-12 rounded-2xl mb-12 animate-fade-in border-2 border-primary/30">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Globe className="w-8 h-8 text-primary" />
-            <h3 className="text-2xl font-bold text-primary">🌍 Multilingual Availability</h3>
-          </div>
-          <p className="text-center text-lg text-foreground/90 mb-8 max-w-3xl mx-auto">
-            All pages of this website and all services, including AI Automation Fix, are fully available 
-            in multiple languages to support international clients worldwide.
-          </p>
-          <h4 className="text-center text-lg font-semibold mb-6 text-secondary">
-            Supported Languages Across the Entire Website:
-          </h4>
-          <div className="flex flex-wrap justify-center gap-4">
-            {languages.map((lang, index) => (
-              <div 
-                key={index}
-                className={`px-6 py-4 rounded-xl bg-background/50 border border-border/50 hover:border-primary/50 transition-all duration-300 ${lang.rtl ? 'text-right' : ''}`}
-                dir={lang.rtl ? 'rtl' : 'ltr'}
-              >
-                <span className="text-2xl mr-2">{lang.flag}</span>
-                <span className="font-medium">{lang.name}</span>
-                {lang.native && (
-                  <span className="text-muted-foreground ml-2">({lang.native})</span>
-                )}
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-sm text-muted-foreground mt-6">
-            Language selection is available site-wide and applies to every page.
-          </p>
-        </div>
 
         {/* CTA */}
         <div className="text-center animate-fade-in">
