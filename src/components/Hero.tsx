@@ -19,7 +19,6 @@ const Hero = () => {
       {useVideo ? (
         <video
           className="absolute inset-0 w-full h-full object-cover z-0"
-          src={heroVideo}
           autoPlay
           muted
           loop
