@@ -4,7 +4,7 @@ import About from "@/components/About";
 import Ecosystem from "@/components/Ecosystem";
 import Projects from "@/components/Projects";
 import AutomationConstructor from "@/components/AutomationConstructor";
-import AIAutomationFix from "@/components/AIAutomationFix";
+import TelegramProducts from "@/components/TelegramProducts";
 import Testimonials from "@/components/Testimonials";
 import Team from "@/components/Team";
 import Contact from "@/components/Contact";
@@ -20,7 +20,7 @@ const Index = () => {
       <Ecosystem />
       <Projects />
       <AutomationConstructor />
-      <AIAutomationFix />
+      <TelegramProducts />
       <Testimonials />
       <Team />
       <Contact />
