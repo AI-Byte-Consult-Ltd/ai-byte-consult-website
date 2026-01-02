@@ -14,6 +14,7 @@ const languages: { code: Language; flag: string; name: string }[] = [
   { code: "de", flag: "🇩🇪", name: "Deutsch" },
   { code: "fr", flag: "🇫🇷", name: "Français" },
   { code: "ar", flag: "🇸🇦", name: "العربية" },
+  { code: "zh", flag: "🇨🇳", name: "中文" },
 ];
 
 const Header = () => {
@@ -54,7 +55,7 @@ const Header = () => {
             <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
             AI Byte Consult
             <span className="text-xs bg-gradient-to-r from-yellow-400 to-orange-500 text-background px-2 py-0.5 rounded-full font-semibold animate-pulse">
-              2025
+              2026
             </span>
           </a>
 
