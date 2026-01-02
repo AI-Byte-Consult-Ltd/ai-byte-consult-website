@@ -179,6 +179,38 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
     "footer.copyright": "AI Byte Consult Ltd. All rights reserved.",
+    
+    // Telegram Products
+    "products.badge": "Starter Packages",
+    "products.title": "Telegram Solutions",
+    "products.subtitle": "Professional Telegram tools to boost your business presence and automate customer interactions",
+    "products.oneTime": "one-time",
+    "products.buyNow": "Buy Now",
+    "products.note": "Secure payment via Revolut. Delivery within 1-3 business days.",
+    
+    "products.card.title": "Digital Card",
+    "products.card.subtitle": "Telegram Business Card",
+    "products.card.description": "A professional digital business card bot that showcases your services, contact info, and social links in an elegant Telegram interface.",
+    "products.card.feature1": "Custom branded design",
+    "products.card.feature2": "Contact & social links",
+    "products.card.feature3": "Service showcase",
+    "products.card.feature4": "Easy sharing via link",
+    
+    "products.bot.title": "Menu Bot",
+    "products.bot.subtitle": "Telegram Group Bot",
+    "products.bot.description": "A smart bot for your Telegram group with interactive menu, automated responses, and moderation tools to engage your community.",
+    "products.bot.feature1": "Interactive menu system",
+    "products.bot.feature2": "Automated welcome messages",
+    "products.bot.feature3": "Basic moderation tools",
+    "products.bot.feature4": "Custom commands",
+    
+    "products.ai.title": "AI Assistant",
+    "products.ai.subtitle": "AI-Powered Group Bot",
+    "products.ai.description": "An intelligent AI bot for groups with product catalog, smart responses, and conversational AI to handle customer inquiries automatically.",
+    "products.ai.feature1": "AI-powered chat responses",
+    "products.ai.feature2": "Product catalog display",
+    "products.ai.feature3": "Order inquiry handling",
+    "products.ai.feature4": "Multi-language support",
   },
   de: {
     // Header
@@ -347,6 +379,38 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Datenschutzrichtlinie",
     "footer.terms": "Nutzungsbedingungen",
     "footer.copyright": "AI Byte Consult Ltd. Alle Rechte vorbehalten.",
+    
+    // Telegram Products
+    "products.badge": "Starter-Pakete",
+    "products.title": "Telegram-Lösungen",
+    "products.subtitle": "Professionelle Telegram-Tools zur Stärkung Ihrer Geschäftspräsenz und Automatisierung von Kundeninteraktionen",
+    "products.oneTime": "einmalig",
+    "products.buyNow": "Jetzt kaufen",
+    "products.note": "Sichere Zahlung über Revolut. Lieferung innerhalb von 1-3 Werktagen.",
+    
+    "products.card.title": "Digitale Karte",
+    "products.card.subtitle": "Telegram Visitenkarte",
+    "products.card.description": "Ein professioneller digitaler Visitenkarten-Bot, der Ihre Dienstleistungen, Kontaktdaten und Social-Links in einer eleganten Telegram-Oberfläche präsentiert.",
+    "products.card.feature1": "Individuelles Markendesign",
+    "products.card.feature2": "Kontakt- & Social-Links",
+    "products.card.feature3": "Dienstleistungsübersicht",
+    "products.card.feature4": "Einfaches Teilen per Link",
+    
+    "products.bot.title": "Menü-Bot",
+    "products.bot.subtitle": "Telegram Gruppen-Bot",
+    "products.bot.description": "Ein intelligenter Bot für Ihre Telegram-Gruppe mit interaktivem Menü, automatisierten Antworten und Moderationstools zur Community-Bindung.",
+    "products.bot.feature1": "Interaktives Menüsystem",
+    "products.bot.feature2": "Automatische Willkommensnachrichten",
+    "products.bot.feature3": "Basis-Moderationstools",
+    "products.bot.feature4": "Benutzerdefinierte Befehle",
+    
+    "products.ai.title": "KI-Assistent",
+    "products.ai.subtitle": "KI-gesteuerter Gruppen-Bot",
+    "products.ai.description": "Ein intelligenter KI-Bot für Gruppen mit Produktkatalog, smarten Antworten und konversationeller KI zur automatischen Bearbeitung von Kundenanfragen.",
+    "products.ai.feature1": "KI-gestützte Chat-Antworten",
+    "products.ai.feature2": "Produktkatalog-Anzeige",
+    "products.ai.feature3": "Bestellanfragen-Bearbeitung",
+    "products.ai.feature4": "Mehrsprachige Unterstützung",
   },
   fr: {
     // Header
@@ -515,6 +579,38 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Politique de confidentialité",
     "footer.terms": "Conditions d'utilisation",
     "footer.copyright": "AI Byte Consult Ltd. Tous droits réservés.",
+    
+    // Telegram Products
+    "products.badge": "Forfaits de démarrage",
+    "products.title": "Solutions Telegram",
+    "products.subtitle": "Outils Telegram professionnels pour renforcer votre présence commerciale et automatiser les interactions clients",
+    "products.oneTime": "unique",
+    "products.buyNow": "Acheter maintenant",
+    "products.note": "Paiement sécurisé via Revolut. Livraison sous 1-3 jours ouvrables.",
+    
+    "products.card.title": "Carte Digitale",
+    "products.card.subtitle": "Carte de visite Telegram",
+    "products.card.description": "Un bot de carte de visite numérique professionnel qui présente vos services, coordonnées et liens sociaux dans une interface Telegram élégante.",
+    "products.card.feature1": "Design personnalisé à votre marque",
+    "products.card.feature2": "Contact & liens sociaux",
+    "products.card.feature3": "Vitrine des services",
+    "products.card.feature4": "Partage facile via lien",
+    
+    "products.bot.title": "Bot Menu",
+    "products.bot.subtitle": "Bot de groupe Telegram",
+    "products.bot.description": "Un bot intelligent pour votre groupe Telegram avec menu interactif, réponses automatisées et outils de modération pour engager votre communauté.",
+    "products.bot.feature1": "Système de menu interactif",
+    "products.bot.feature2": "Messages de bienvenue automatiques",
+    "products.bot.feature3": "Outils de modération de base",
+    "products.bot.feature4": "Commandes personnalisées",
+    
+    "products.ai.title": "Assistant IA",
+    "products.ai.subtitle": "Bot de groupe alimenté par l'IA",
+    "products.ai.description": "Un bot IA intelligent pour les groupes avec catalogue de produits, réponses intelligentes et IA conversationnelle pour gérer automatiquement les demandes clients.",
+    "products.ai.feature1": "Réponses chat alimentées par l'IA",
+    "products.ai.feature2": "Affichage du catalogue produits",
+    "products.ai.feature3": "Gestion des demandes de commande",
+    "products.ai.feature4": "Support multilingue",
   },
   ar: {
     // Header
@@ -683,6 +779,38 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "سياسة الخصوصية",
     "footer.terms": "شروط الخدمة",
     "footer.copyright": "AI Byte Consult Ltd. جميع الحقوق محفوظة.",
+    
+    // Telegram Products
+    "products.badge": "باقات البداية",
+    "products.title": "حلول تيليجرام",
+    "products.subtitle": "أدوات تيليجرام احترافية لتعزيز تواجدك التجاري وأتمتة تفاعلات العملاء",
+    "products.oneTime": "مرة واحدة",
+    "products.buyNow": "اشترِ الآن",
+    "products.note": "دفع آمن عبر Revolut. التسليم خلال 1-3 أيام عمل.",
+    
+    "products.card.title": "البطاقة الرقمية",
+    "products.card.subtitle": "بطاقة أعمال تيليجرام",
+    "products.card.description": "بوت بطاقة أعمال رقمية احترافية يعرض خدماتك ومعلومات الاتصال وروابط التواصل الاجتماعي في واجهة تيليجرام أنيقة.",
+    "products.card.feature1": "تصميم مخصص بعلامتك التجارية",
+    "products.card.feature2": "روابط الاتصال والتواصل الاجتماعي",
+    "products.card.feature3": "عرض الخدمات",
+    "products.card.feature4": "مشاركة سهلة عبر الرابط",
+    
+    "products.bot.title": "بوت القائمة",
+    "products.bot.subtitle": "بوت مجموعة تيليجرام",
+    "products.bot.description": "بوت ذكي لمجموعة تيليجرام الخاصة بك مع قائمة تفاعلية وردود آلية وأدوات إشراف لإشراك مجتمعك.",
+    "products.bot.feature1": "نظام قائمة تفاعلي",
+    "products.bot.feature2": "رسائل ترحيب آلية",
+    "products.bot.feature3": "أدوات إشراف أساسية",
+    "products.bot.feature4": "أوامر مخصصة",
+    
+    "products.ai.title": "مساعد الذكاء الاصطناعي",
+    "products.ai.subtitle": "بوت مجموعة مدعوم بالذكاء الاصطناعي",
+    "products.ai.description": "بوت ذكاء اصطناعي ذكي للمجموعات مع كتالوج المنتجات والردود الذكية والذكاء الاصطناعي المحادثي للتعامل مع استفسارات العملاء تلقائياً.",
+    "products.ai.feature1": "ردود محادثة مدعومة بالذكاء الاصطناعي",
+    "products.ai.feature2": "عرض كتالوج المنتجات",
+    "products.ai.feature3": "معالجة استفسارات الطلبات",
+    "products.ai.feature4": "دعم متعدد اللغات",
   },
 };
 
