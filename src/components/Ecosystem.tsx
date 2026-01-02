@@ -1,4 +1,4 @@
-import { Bot, Globe, Hexagon, Users, UtensilsCrossed, Mountain } from "lucide-react";
+import { Bot, Globe, Hexagon, Users, UtensilsCrossed, Mountain, Heart, PawPrint } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const ecosystems = [
@@ -37,6 +37,18 @@ const ecosystems = [
     title: "PRIDE Social Network",
     description:
       "PRIDE Social Network is a decentralized Web3 community platform that rewards creativity and engagement with native tokens. It empowers users to share ideas, art, and experiences while earning from their social activity, building an inclusive and self-sustaining digital ecosystem for expression and collaboration.",
+  },
+  {
+    icon: Heart,
+    title: "PRIDE Foundation",
+    description:
+      "PRIDE Foundation is a humanitarian initiative dedicated to supporting vulnerable communities and promoting social equity. Through blockchain-verified donations and transparent fund allocation, the foundation provides educational programs, healthcare assistance, and crisis relief. Every contribution is tracked on-chain, ensuring accountability and maximizing impact for those in need.",
+  },
+  {
+    icon: PawPrint,
+    title: "Animals Foundation",
+    description:
+      "Animals Foundation is a global animal welfare organization leveraging AI and blockchain for wildlife conservation and pet rescue operations. The foundation operates rescue shelters, funds veterinary care, and uses AI-powered tracking for endangered species protection. NFT-based adoption certificates and tokenized donations create a sustainable model for animal care worldwide.",
   },
 ];
 
